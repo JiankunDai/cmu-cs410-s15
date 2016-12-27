@@ -26,7 +26,7 @@
 
 
 # location of official support code and libraries
-AFS_PATH=${AFS_PATH-'/afs/cs.cmu.edu/academic/class/15410-f15/Web/update/p0'}
+AFS_PATH=${AFS_PATH-'/afs/cs.cmu.edu/academic/class/15410-f16/Web/update/p0'}
 WEB_URL=${WEB_URL-'http://www.cs.cmu.edu/~410/update/p0'}
 
 # the name of the file containing the MD5s for the files we want to update

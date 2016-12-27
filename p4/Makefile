@@ -70,13 +70,26 @@ DEP_SUFFIX = dep
 # Libraries!
 # These may be overwridden by {,$(STUKDIR)/,$(STUUDIR)/}config.mk
 ###########################################################################
-410KERNEL_LIBS =
+410KERNEL_LIBS = \
+				 libboot.a \
+				 libelf.a \
+				 liblmm.a \
+				 libmalloc.a \
+				 libmisc.a \
+				 libRNG.a \
+				 libsimics.a \
+				 libstdio.a \
+				 libstdlib.a \
+				 libstring.a \
+				 libx86.a \
+				 libsmp.a \
+				 libide.a \
 
 ## Can't have thrgrp be a default as we don't ship with the requisite files
 ## in user/ like we did with P2.
 410USER_LIBS_EARLY = # libthrgrp.a
 410USER_LIBS_LATE = libRNG.a libx86.a libsimics.a libstdio.a libstdlib.a \
-                    libstring.a libmalloc.a libtest.a
+                    libstring.a libmalloc.a libtest.a libopen.a
 STUDENT_LIBS_EARLY = libthread.a libautostack.a
 STUDENT_LIBS_LATE = libsyscall.a
 
@@ -305,13 +318,13 @@ $(BUILDDIR)/% : $(STUUDIR)/$(UFILEDIR)/%
 html_doc:
 	$(DOC) doxygen.conf
 
-PRINTOUT=threadlib.ps
+PRINTOUT=kernel.ps
 
 print:
 	enscript -2rG -fCourier7 -FCourier-Bold10 -p $(PRINTOUT) \
 		$(if $(strip $(TABSTOP)),-T $(TABSTOP),) \
 			README.dox \
-			`find ./user/libthread/ -type f -regex  '.*\.[chS]' | sort`
+			`find ./kern/ -type f -regex  '.*\.[chS]' | sort`
 
 ################# CLEANING RULES #####################
 .PHONY: clean veryclean
